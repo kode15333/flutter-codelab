@@ -6,7 +6,7 @@ void main() {
   runApp(new FriendlychatApp());
 }
 
-const String _name = "Your Name";
+const String _name = "Will";
 
 final ThemeData kIOSTheme = new ThemeData(
   primarySwatch: Colors.orange,
@@ -45,54 +45,45 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         appBar: new AppBar(
           title: new Text("Friendlychat"),
           elevation:
-          Theme
-              .of(context)
-              .platform == TargetPlatform.iOS ? 0.0 : 4.0,
+              Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
         ),
         body: new Container(
-          child: new Column(
-            children: <Widget>[
-              new Flexible(
-                child: new ListView.builder(
-                  padding: new EdgeInsets.all(8.0),
-                  reverse: true,
-                  itemBuilder: (_, int index) => _message[index],
-                  itemCount: _message.length,
+            child: new Column(
+              children: <Widget>[
+                new Flexible(
+                  child: new ListView.builder(
+                    padding: new EdgeInsets.all(8.0),
+                    reverse: true,
+                    itemBuilder: (_, int index) => _message[index],
+                    itemCount: _message.length,
+                  ),
                 ),
-              ),
-              new Divider(height: 1.0),
-              new Container(
-                decoration:
-                new BoxDecoration(color: Theme
-                    .of(context)
-                    .cardColor),
-                child: _buildTextComposer(),
-              )
-            ],
-          ),
-          decoration: Theme
-              .of(context)
-              .platform == TargetPlatform.iOS ? new BoxDecoration(
-            border: new Border(
-              top: new BorderSide(color: Colors.grey[200]),
+                new Divider(height: 1.0),
+                new Container(
+                  decoration:
+                      new BoxDecoration(color: Theme.of(context).cardColor),
+                  child: _buildTextComposer(),
+                )
+              ],
             ),
-          )
-              : null
-        ));
+            decoration: Theme.of(context).platform == TargetPlatform.iOS
+                ? new BoxDecoration(
+                    border: new Border(
+                      top: new BorderSide(color: Colors.grey[200]),
+                    ),
+                  )
+                : null));
   }
 
   @override
   void dispose() {
-    for (ChatMessage message in _message)
-      message.animationController.dispose();
+    for (ChatMessage message in _message) message.animationController.dispose();
     super.dispose();
   }
 
   Widget _buildTextComposer() {
     return new IconTheme(
-        data: new IconThemeData(color: Theme
-            .of(context)
-            .accentColor),
+        data: new IconThemeData(color: Theme.of(context).accentColor),
         child: new Container(
             margin: const EdgeInsets.symmetric(horizontal: 4.0),
             child: new Row(
@@ -139,6 +130,11 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 }
 
+// test
+class ChatMessageBox exteds StatelessWideget{
+return new App(
+)
+}
 class ChatMessage extends StatelessWidget {
   ChatMessage({this.text, this.animationController});
 
@@ -166,10 +162,7 @@ class ChatMessage extends StatelessWidget {
                   children: <Widget>[
                     new Text(
                       _name,
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .subhead,
+                      style: Theme.of(context).textTheme.subhead,
                     ),
                     new Container(
                       margin: const EdgeInsets.only(top: 1.0),
